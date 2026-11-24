@@ -42,19 +42,7 @@ One-time setup:
 
 1. Repository **Settings → Pages → Build and deployment → Source**: choose **GitHub Actions**.
 2. Under **Custom domain**, enter `kiroku.gg`, then tick **Enforce HTTPS** once the certificate is ready. `site/CNAME` holds the same domain.
-3. DNS for `kiroku.gg`:
-
-   | Name | Type | Value |
-   | --- | --- | --- |
-   | `@` | A | `185.199.108.153` |
-   | `@` | A | `185.199.109.153` |
-   | `@` | A | `185.199.110.153` |
-   | `@` | A | `185.199.111.153` |
-   | `@` | AAAA | `2606:50c0:8000::153` |
-   | `@` | AAAA | `2606:50c0:8001::153` |
-   | `@` | AAAA | `2606:50c0:8002::153` |
-   | `@` | AAAA | `2606:50c0:8003::153` |
-   | `www` | CNAME | `kaikeeps.github.io` |
+3. Point the `kiroku.gg` DNS records at GitHub Pages as described in GitHub's guide, [Managing a custom domain for your GitHub Pages site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) (apex domain and `www` subdomain).
 
 `site/.nojekyll` tells Pages to serve the files as they are.
 
