@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'self'">
+<title>Kiroku: every +rep goes on the record</title>
+<meta name="description" content="Kiroku is a Discord reputation bot. Give +rep or -rep in chat, climb the leaderboard, roll /daily for a Rep Again and collect the stamps.">
+<meta name="theme-color" content="#f6c22e">
+<link rel="canonical" href="https://kiroku.gg/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kiroku">
+<meta property="og:title" content="Kiroku: every +rep goes on the record">
+<meta property="og:description" content="A Discord reputation bot. Give +rep or -rep in chat, climb the leaderboard, collect the stamps.">
+<meta property="og:url" content="https://kiroku.gg/">
+<meta property="og:image" content="https://kiroku.gg/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kiroku: every +rep goes on the record. A round violet +REP stamp on a marigold card.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kiroku: every +rep goes on the record">
+<meta name="twitter:description" content="A Discord reputation bot. Give +rep or -rep in chat, climb the leaderboard, collect the stamps.">
+<meta name="twitter:image" content="https://kiroku.gg/assets/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/dela-gothic-one-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="currentColor" d="M14.2 1 4 13.6h6.3L8.6 23 20 9.6h-6.9z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21.2C5.4 16 2 12.5 2 8.4 2 5.3 4.4 3 7.3 3c1.9 0 3.6 1 4.7 2.6C13.100 4 14.800 3 16.700 3 19.600 3 22 5.300 22 8.400c0 4.100-3.400 7.600-10 12.800z"/></symbol>
+  <symbol id="i-horns" viewBox="0 0 24 24"><path fill="currentColor" d="M3 2c.2 3.200 1.300 5.200 3.300 6.300A8 8 0 0 0 4 14c0 4.400 3.600 8 8 8s8-3.600 8-8a8 8 0 0 0-2.300-5.700C19.700 7.200 20.800 5.200 21 2c-2.300 1.800-4.400 3-6.200 3.500a8 8 0 0 0-5.600 0C7.400 5 5.300 3.800 3 2zm4.200 9.800 3.500 1.400-1.200 1.900a1.600 1.600 0 0 1-2.300-3.300zm9.600 0a1.600 1.600 0 0 1-2.300 3.300l-1.200-1.900zM9 17.500h6c-.6 1-1.700 1.600-3 1.600s-2.400-.6-3-1.600z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="/"><span class="seal" aria-hidden="true" lang="ja">記</span>Kiroku</a>
+    <nav aria-label="On this page">
+      <a href="#rep">How rep works</a>
+      <a href="#commands">Commands</a>
+      <a href="#again">Rep Again</a>
+      <a href="#achievements">Stamps</a>
+      <a href="#profile">Profile card</a>
+    </nav>
+    <a class="login" href="/coming-soon/">Log in</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="cover" id="top">
+  <div class="wrap cover-grid">
+    <div class="cover-copy">
+      <h1>Every +rep goes on the record.</h1>
+      <p class="lede">Kiroku (<span class="kanji" lang="ja">記録</span>, “record”) is a reputation bot for Discord. Thank someone with <code>+rep</code>, call them out with <code>-rep</code>, and it stamps the new total where everyone can see it.</p>
+      <p class="actions">
+        <a class="btn" href="#rep">How rep works</a>
+        <a class="textlink" href="#commands">See the commands</a>
+      </p>
+    </div>
+
+    <div class="cover-art">
+      <figure class="chat tilt-l" aria-label="Example: giving rep in chat">
+        <figcaption class="chat-channel"><span><span aria-hidden="true"># </span>general</span><span class="chat-server">Lantern Club</span></figcaption>
+        <div class="msg">
+          <span class="av av-c" aria-hidden="true">B</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-c">Bram</b> <span class="time">9:41 PM</span></p>
+            <p>+rep <span class="mention">@Dana</span> for staying up to fix the event bracket</p>
+          </div>
+        </div>
+        <div class="msg is-bot">
+          <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">9:41 PM</span></p>
+            <p>👍 <span class="mention">@Dana</span> now has <b class="tally">172</b> rep</p>
+          </div>
+        </div>
+        <div class="msg">
+          <span class="av av-d" aria-hidden="true">D</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-d">Dana</b> <span class="time">9:42 PM</span></p>
+            <p>worth it</p>
+          </div>
+        </div>
+      </figure>
+      <svg class="bigstamp" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <defs><path id="ring" d="M100 100 m-76 0 a76 76 0 1 1 152 0 a76 76 0 1 1 -152 0"/></defs>
+        <circle class="s-line s-outer" cx="100" cy="100" r="93"/>
+        <circle class="s-line s-inner" cx="100" cy="100" r="60"/>
+        <text class="s-ring"><textPath href="#ring" startOffset="0">KIROKU ★ ON THE RECORD ★ KIROKU ★ ON THE RECORD ★</textPath></text>
+        <text class="s-main" x="100" y="103" text-anchor="middle">+REP</text>
+        <text class="s-sub" x="100" y="128" text-anchor="middle" lang="ja">記録</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="rep">
+  <div class="wrap">
+    <h2>How rep works</h2>
+    <p class="section-lede">Three rules. You already know the first one.</p>
+
+    <div class="rules">
+      <article class="rule">
+        <figure class="chat tilt-r" aria-label="Example: a +rep sent as a reply, then a -rep with a mention">
+          <div class="msg">
+            <span class="av av-a" aria-hidden="true">A</span>
+            <div class="msg-body">
+              <p class="reply-to"><span class="reply-name">Chidi</span> here’s the fixed config</p>
+              <p class="msg-head"><b class="name name-a">Aiko</b> <span class="time">7:03 PM</span></p>
+              <p>+REP lifesaver</p>
+            </div>
+          </div>
+          <div class="msg is-bot">
+            <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">7:03 PM</span></p>
+              <p>👍 <span class="mention">@Chidi</span> now has <b class="tally">513</b> rep</p>
+            </div>
+          </div>
+          <div class="msg">
+            <span class="av av-h" aria-hidden="true">J</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-h">Jun</b> <span class="time">7:05 PM</span></p>
+              <p>-rep <span class="mention">@Ivo</span> for the finale spoiler</p>
+            </div>
+          </div>
+          <div class="msg is-bot">
+            <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">7:05 PM</span></p>
+              <p>👎 <span class="mention">@Ivo</span> now has <b class="tally">-99</b> rep</p>
+            </div>
+          </div>
+        </figure>
+        <h3>Give it or take it</h3>
+        <p>Type <code>+rep @user</code> or <code>-rep @user</code>, or reply to a message with just <code>+rep</code> or <code>-rep</code>. Any case works. Add a reason if you like.</p>
+        <p>Kiroku answers with the new total and pings only the person who got it.</p>
+      </article>
+
+      <article class="rule">
+        <figure class="chat tilt-l" aria-label="Example: repping the same person again too soon">
+          <div class="msg">
+            <span class="av av-c" aria-hidden="true">B</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-c">Bram</b> <span class="time">9:44 PM</span></p>
+              <p>+rep <span class="mention">@Dana</span> again because honestly</p>
+              <p class="reacts"><span class="react">⏳ <span class="react-n">1</span></span></p>
+            </div>
+          </div>
+          <div class="msg">
+            <span class="av av-c" aria-hidden="true">B</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-c">Bram</b> <span class="time">9:44 PM</span></p>
+              <p>fine. +rep <span class="mention">@Eko</span></p>
+            </div>
+          </div>
+          <div class="msg is-bot">
+            <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">9:44 PM</span></p>
+              <p>👍 <span class="mention">@Eko</span> now has <b class="tally">97</b> rep</p>
+            </div>
+          </div>
+        </figure>
+        <h3>One cooldown per person</h3>
+        <p>After you rep someone, you wait before repping <em>them</em> again: an hour, unless the server’s admins set it differently. Everyone else is fair game, back to back.</p>
+        <p>Too soon for the same person? You get a ⏳ and nothing else.</p>
+      </article>
+
+      <article class="rule">
+        <figure class="chat tilt-r" aria-label="Example: trying to rep yourself">
+          <div class="msg">
+            <span class="av av-e" aria-hidden="true">I</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-e">Ivo</b> <span class="time">11:20 PM</span></p>
+              <p>+rep <span class="mention">@Ivo</span> for being the best</p>
+              <p class="reacts"><span class="react">🚫 <span class="react-n">1</span></span></p>
+            </div>
+          </div>
+          <div class="msg is-bot">
+            <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+            <div class="msg-body">
+              <p class="reply-to"><span class="reply-name">Ivo</span> +rep @Ivo for being the best</p>
+              <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">11:20 PM</span></p>
+              <p>Self-rep? Bold. Denied.</p>
+            </div>
+          </div>
+        </figure>
+        <h3>No repping yourself. Or bots.</h3>
+        <p>Self-rep gets a 🚫 and one of a few lines: “You can’t rep yourself lol”, “Nice try. 🙃”, or the one above. Rep aimed at a bot gets the 🚫 and no reply, Kiroku included.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section stock" id="commands">
+  <div class="wrap">
+    <h2>Four slash commands</h2>
+    <p class="section-lede">Rep happens in plain chat. These are for looking things up.</p>
+
+    <div class="commands-grid">
+      <div>
+        <dl class="commands">
+          <div class="command">
+            <dt>/replist</dt>
+            <dd>The leaderboard. Medals for the top three, numbered tags after that, 50 members a page in two columns of 25. Your own rank sits at the bottom of every page.</dd>
+          </div>
+          <div class="command">
+            <dt>/replist-</dt>
+            <dd>The same board flipped: most negative first, under a 👎.</dd>
+          </div>
+          <div class="command">
+            <dt>/profile <span class="arg">[member]</span></dt>
+            <dd>A profile card as an image. Yours, or anyone’s you name.</dd>
+          </div>
+          <div class="command">
+            <dt>/daily</dt>
+            <dd>Once every 24 hours, a 25% shot at a Rep Again.</dd>
+          </div>
+        </dl>
+        <p class="aside-note">Admins get a fifth: <code>/cooldown</code> shows the wait between reps and sets it, anywhere from 1 minute to 24 hours.</p>
+      </div>
+
+      <div>
+        <figure class="chat tilt-r" aria-label="Example: the /replist leaderboard, shortened">
+          <div class="msg is-bot">
+            <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+            <div class="msg-body">
+              <p class="used"><b>Farah</b> used <span class="cmd">/replist</span></p>
+              <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">8:15 PM</span></p>
+              <div class="embed">
+                <p class="embed-title">👍 Reputation Leaderboard — Lantern Club</p>
+                <div class="board-cols">
+                  <ol class="board">
+                    <li><span class="medal">🥇</span><span class="who">Lena — <b>+2050</b></span></li>
+                    <li><span class="medal">🥈</span><span class="who">Aiko — <b>+1240</b></span></li>
+                    <li><span class="medal">🥉</span><span class="who">Chidi — <b>+513</b></span></li>
+                    <li><span class="tag">#04</span><span class="who">Mirek — <b>+388</b></span></li>
+                    <li><span class="tag">#05</span><span class="who">Noor — <b>+301</b></span></li>
+                    <li><span class="tag">#06</span><span class="who">Dana — <b>+172</b></span></li>
+                    <li><span class="tag">#07</span><span class="who">Oskar — <b>+140</b></span></li>
+                    <li><span class="tag">#08</span><span class="who">Eko — <b>+100</b></span></li>
+                    <li class="more" aria-hidden="true">···</li>
+                  </ol>
+                  <ol class="board" start="26">
+                    <li><span class="tag">#26</span><span class="who">Pia — <b>+31</b></span></li>
+                    <li><span class="tag">#27</span><span class="who">Bram — <b>+29</b></span></li>
+                    <li><span class="tag">#28</span><span class="who">Quin — <b>+27</b></span></li>
+                    <li><span class="tag">#29</span><span class="who">Rhea — <b>+27</b></span></li>
+                    <li><span class="tag">#30</span><span class="who">Sol — <b>+24</b></span></li>
+                    <li><span class="tag">#31</span><span class="who">Tavi — <b>+22</b></span></li>
+                    <li><span class="tag">#32</span><span class="who">Uma — <b>+19</b></span></li>
+                    <li><span class="tag">#33</span><span class="who">Farah — <b>+18</b></span></li>
+                    <li class="more" aria-hidden="true">···</li>
+                  </ol>
+                </div>
+                <p class="embed-foot">You: #33 — +18 rep</p>
+              </div>
+              <p class="chat-btns" aria-hidden="true"><span class="chat-btn is-off">Previous</span><span class="chat-btn is-plain">Next</span></p>
+            </div>
+          </div>
+        </figure>
+        <p class="fig-note">Shortened to fit. Further down the board, the same footer might read “You: #237 — -2 rep”.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section violet" id="again">
+  <div class="wrap">
+    <div class="again-grid">
+      <div class="again-copy">
+        <h2>Rep Again skips the wait</h2>
+        <p class="section-lede">A Rep Again lets you rep someone you’re still on cooldown for.</p>
+
+        <div class="coupon" role="img" aria-label="A Rep Again coupon: good for one rep, cooldown or not. One in four from /daily.">
+          <div class="coupon-main">
+            <p class="coupon-title"><span class="bolt-disc"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span>Rep Again</p>
+            <p class="coupon-line">Good for one rep, cooldown or not.</p>
+          </div>
+          <div class="coupon-stub">
+            <p class="coupon-odds">1 in 4</p>
+            <p class="coupon-small">from /daily</p>
+          </div>
+        </div>
+
+        <ul class="facts">
+          <li>Hit a cooldown while holding one and Kiroku replies with a <b>⚡ Rep again (use 1)</b> button. Press it and the rep goes through.</li>
+          <li>The button is yours alone, and it stays live for two minutes.</li>
+          <li>One use per minute, whoever it’s for.</li>
+          <li>They stack. You can bank up to 25.</li>
+        </ul>
+      </div>
+
+      <div class="again-art">
+        <figure class="chat tilt-l" aria-label="Example: using a Rep Again on a cooldown, before and after pressing the button">
+          <div class="msg">
+            <span class="av av-a" aria-hidden="true">A</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-a">Aiko</b> <span class="time">10:02 PM</span></p>
+              <p>+rep <span class="mention">@Lena</span> ok that clutch deserves two</p>
+              <p class="reacts"><span class="react">⏳ <span class="react-n">1</span></span></p>
+            </div>
+          </div>
+          <div class="msg is-bot">
+            <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">10:02 PM</span></p>
+              <p>⏳ On cooldown for Lena (42m). You have 3 Rep Agains.</p>
+              <p class="chat-btns"><span class="chat-btn">⚡ Rep again (use 1)</span></p>
+            </div>
+          </div>
+          <p class="chat-gap">Aiko presses it</p>
+          <div class="msg">
+            <span class="av av-a" aria-hidden="true">A</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-a">Aiko</b> <span class="time">10:02 PM</span></p>
+              <p>+rep <span class="mention">@Lena</span> ok that clutch deserves two</p>
+              <p class="reacts"><span class="react">⚡ <span class="react-n">1</span></span></p>
+            </div>
+          </div>
+          <div class="msg is-bot">
+            <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+            <div class="msg-body">
+              <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">10:02 PM</span></p>
+              <p>⚡👍 <span class="mention">@Lena</span> now has <b class="tally">2050</b> rep</p>
+              <p class="chat-btns"><span class="chat-btn is-off">✓ Used</span></p>
+            </div>
+          </div>
+        </figure>
+
+        <div class="bank" role="img" aria-label="Aiko’s bank afterwards: 2 of 25 Rep Agains held">
+          <p class="bank-label"><span>Aiko’s bank</span><span class="bank-count">2 of 25</span></p>
+          <div class="stubs" aria-hidden="true">
+            <i class="on"><svg><use href="#i-bolt"/></svg></i><i class="on"><svg><use href="#i-bolt"/></svg></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="daily" id="daily">
+      <h3>/daily is where they come from</h3>
+      <p>One roll every 24 hours, counted from your last one. It lands one time in four.</p>
+
+      <div class="daily-row">
+        <figure class="outcome">
+          <div class="chat tilt-l">
+            <div class="msg is-bot">
+              <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+              <div class="msg-body">
+                <p class="used"><b>Bram</b> used <span class="cmd">/daily</span></p>
+                <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">8:00 AM</span></p>
+                <p><span class="mention">@Bram</span></p>
+                <div class="embed is-gold">
+                  <p class="embed-title">🎲 Daily roll<span class="ell">…</span> 🍀 Rep Again!</p>
+                  <p class="embed-text">Use it to skip a rep cooldown once.</p>
+                  <p class="embed-foot">Next roll in 24h · You hold 1 Rep Again</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>A win</b> Posted in the channel, with a ping for the winner and nobody else.</figcaption>
+        </figure>
+
+        <figure class="outcome">
+          <div class="chat tilt-r">
+            <div class="msg is-bot">
+              <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+              <div class="msg-body">
+                <p class="used"><b>Hana</b> used <span class="cmd">/daily</span></p>
+                <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">8:03 AM</span></p>
+                <div class="embed is-grey">
+                  <p class="embed-title">🎲 Daily roll<span class="ell">…</span> 💨 Nothing this time.</p>
+                  <p class="embed-text">The dice said no. Try again tomorrow.</p>
+                  <p class="embed-foot">Next roll in 24h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>A miss</b> Also public, so everyone can enjoy it. No ping.</figcaption>
+        </figure>
+
+        <figure class="outcome">
+          <div class="chat tilt-l">
+            <div class="msg is-bot">
+              <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+              <div class="msg-body">
+                <p class="used"><b>Hana</b> used <span class="cmd">/daily</span></p>
+                <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">9:16 AM</span></p>
+                <p>⏳ You already rolled today. Next roll in 22h 47m.</p>
+                <p class="only-you">Only you can see this</p>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>Too soon</b> A private nudge. Win with a full bank and Kiroku tells you: “<span class="ell">…</span> but your bank is full (25/25).”</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="achievements">
+  <div class="wrap">
+    <h2>Nine stamps to collect. Four you might regret.</h2>
+    <p class="section-lede">Cross a line and Kiroku says so in chat. The card fills up in both directions.</p>
+
+    <div class="cards">
+      <div class="stampcard good">
+        <p class="stampcard-title">The good card <span class="stampcard-count">5 stamps</span></p>
+        <ol class="slots">
+          <li class="slot"><span class="ink"><b>100</b><small>rep</small></span><span class="slot-name"><span aria-hidden="true">⭐</span>Rising Star</span></li>
+          <li class="slot"><span class="ink"><b>250</b><small>rep</small></span><span class="slot-name"><span aria-hidden="true">🛡️</span>Trusted</span></li>
+          <li class="slot"><span class="ink"><b>500</b><small>rep</small></span><span class="slot-name"><span aria-hidden="true">🔥</span>Fan Favorite</span></li>
+          <li class="slot"><span class="ink"><b>1,000</b><small>rep</small></span><span class="slot-name"><span aria-hidden="true">👑</span>Legend</span></li>
+          <li class="slot"><span class="ink"><b>2,000</b><small>rep</small></span><span class="slot-name"><span aria-hidden="true">🌌</span>Mythic</span></li>
+        </ol>
+      </div>
+
+      <div class="stampcard bad">
+        <p class="stampcard-title">The other card <span class="stampcard-count">4 stamps</span></p>
+        <ol class="slots">
+          <li class="slot"><span class="ink"><b>-100</b><small>rep</small></span><span class="slot-name"><span aria-hidden="true">🤡</span>Clown</span></li>
+          <li class="slot"><span class="ink"><b>-500</b><small>rep</small></span><span class="slot-name"><span aria-hidden="true">🚨</span>Third’s Disciple</span></li>
+          <li class="slot"><span class="ink"><b>-1,000</b><small>rep</small></span><span class="slot-name"><span aria-hidden="true">💀</span>Villain Arc</span></li>
+          <li class="slot"><span class="ink"><b>-2,000</b><small>rep</small></span><span class="slot-name"><span aria-hidden="true">👹</span>Final Boss</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="said">
+      <div class="said-copy">
+        <h3>Announced in chat, once</h3>
+        <p>The announcement is its own message, right after the usual reply. No box, no fanfare, one line.</p>
+        <ul class="ink-list">
+          <li>Each stamp is announced once per member, ever. Dip back under and climb again, and Kiroku stays quiet.</li>
+          <li>It pings the member who earned it and nobody else.</li>
+          <li>Every stamp has a couple of lines and Kiroku picks one. At 1,000 you might get “🏆 Four digits!”</li>
+        </ul>
+      </div>
+
+      <figure class="chat tilt-r" aria-label="Example: two achievements announced in chat">
+        <div class="msg">
+          <span class="av av-d" aria-hidden="true">D</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-d">Dana</b> <span class="time">6:30 PM</span></p>
+            <p>+rep <span class="mention">@Eko</span> welcome to triple digits</p>
+          </div>
+        </div>
+        <div class="msg is-bot">
+          <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">6:30 PM</span></p>
+            <p>👍 <span class="mention">@Eko</span> now has <b class="tally">100</b> rep</p>
+          </div>
+        </div>
+        <div class="msg is-bot">
+          <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">6:30 PM</span></p>
+            <p>⭐ <span class="mention">@Eko</span> just hit <b>100 rep</b>! Rising Star unlocked.</p>
+          </div>
+        </div>
+        <p class="chat-gap">Meanwhile</p>
+        <div class="msg is-bot">
+          <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">7:06 PM</span></p>
+            <p>👎 <span class="mention">@Ivo</span> now has <b class="tally">-100</b> rep</p>
+          </div>
+        </div>
+        <div class="msg is-bot">
+          <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">7:06 PM</span></p>
+            <p>🤡 <span class="mention">@Ivo</span> hit <b>-100 rep</b>. The people have spoken.</p>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section ink-band" id="profile">
+  <div class="wrap profile-grid">
+    <div>
+      <h2>Your profile card</h2>
+      <p class="section-lede"><code>/profile</code> draws your card as an image and posts it. Name a member to pull up theirs.</p>
+      <ul class="facts">
+        <li>Avatar, display name, @username, and the highest title you’ve reached.</li>
+        <li>Your rep, your rank, and how many Rep Agains you’re holding.</li>
+        <li>Your top five fans, the people who’ve given you the most +rep.</li>
+        <li>Your top three stans, the ones who keep giving you -rep. They care, in their way.</li>
+      </ul>
+    </div>
+
+    <figure class="pcard tilt-r" aria-label="Example profile card for Lena">
+      <div class="pcard-top">
+        <span class="av pcard-av" aria-hidden="true">L</span>
+        <div class="pcard-id">
+          <p class="pcard-name">Lena</p>
+          <p class="pcard-handle">@lena.dev</p>
+          <p class="pill">Mythic</p>
+        </div>
+      </div>
+      <dl class="pcard-stats">
+        <div><dt>Rep</dt><dd class="pos">+2,050</dd></div>
+        <div><dt>Rank</dt><dd>#1</dd></div>
+        <div><dt>Rep Again</dt><dd><svg aria-hidden="true"><use href="#i-bolt"/></svg>3</dd></div>
+      </dl>
+      <div class="pcard-lists">
+        <div>
+          <p class="pcard-h"><svg aria-hidden="true"><use href="#i-heart"/></svg>Top fans</p>
+          <ol class="people">
+            <li><span class="av av-a sm" aria-hidden="true">A</span><span class="who">Aiko</span><span class="count pos">+41</span></li>
+            <li><span class="av av-d sm" aria-hidden="true">D</span><span class="who">Dana</span><span class="count pos">+36</span></li>
+            <li><span class="av av-c sm" aria-hidden="true">B</span><span class="who">Bram</span><span class="count pos">+28</span></li>
+            <li><span class="av av-f sm" aria-hidden="true">C</span><span class="who">Chidi</span><span class="count pos">+19</span></li>
+            <li><span class="av av-g sm" aria-hidden="true">E</span><span class="who">Eko</span><span class="count pos">+12</span></li>
+          </ol>
+        </div>
+        <div>
+          <p class="pcard-h"><svg aria-hidden="true"><use href="#i-horns"/></svg>Top stans</p>
+          <ol class="people">
+            <li><span class="av av-e sm" aria-hidden="true">I</span><span class="who">Ivo</span><span class="count neg">−9</span></li>
+            <li><span class="av av-h sm" aria-hidden="true">J</span><span class="who">Jun</span><span class="count neg">−4</span></li>
+            <li><span class="av av-i sm" aria-hidden="true">H</span><span class="who">Hana</span><span class="count neg">−2</span></li>
+          </ol>
+        </div>
+      </div>
+      <p class="pcard-brand" aria-hidden="true">kiroku.gg</p>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="more">
+  <div class="wrap extras-grid">
+    <div class="extra" id="talks-back">
+      <h2>It talks back</h2>
+      <p>Mention Kiroku and it answers with whatever it feels like. Mention it again inside half a minute and it ignores you.</p>
+      <figure class="chat tilt-l" aria-label="Example: pinging Kiroku">
+        <div class="msg">
+          <span class="av av-h" aria-hidden="true">J</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-h">Jun</b> <span class="time">1:12 AM</span></p>
+            <p><span class="mention">@Kiroku</span> you’re rigged</p>
+          </div>
+        </div>
+        <div class="msg is-bot">
+          <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">1:12 AM</span></p>
+            <p>No u</p>
+          </div>
+        </div>
+        <div class="msg">
+          <span class="av av-e" aria-hidden="true">I</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-e">Ivo</b> <span class="time">1:13 AM</span></p>
+            <p><span class="mention">@Kiroku</span> it’s me, your favourite member</p>
+          </div>
+        </div>
+        <div class="msg is-bot">
+          <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">1:13 AM</span></p>
+            <p>New phone who dis</p>
+          </div>
+        </div>
+        <div class="msg">
+          <span class="av av-c" aria-hidden="true">B</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-c">Bram</b> <span class="time">1:15 AM</span></p>
+            <p><span class="mention">@Kiroku</span> say something nice</p>
+          </div>
+        </div>
+        <div class="msg is-bot">
+          <span class="av av-bot" aria-hidden="true" lang="ja">記</span>
+          <div class="msg-body">
+            <p class="msg-head"><b class="name name-bot">Kiroku</b> <span class="badge">App</span> <span class="time">1:15 AM</span></p>
+            <p>Ping me again and it’s -rep.</p>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <div class="extra" id="quiet">
+      <h2>It knows when to be quiet</h2>
+      <p>Admins can close channels to Kiroku. In those, <code>+rep</code> does nothing at all, and a slash command gets a private “Kiroku doesn’t work in this channel.” If nothing happens, try a different channel.</p>
+      <ul class="channels" aria-label="Example channels">
+        <li><span aria-hidden="true">#</span> general</li>
+        <li><span aria-hidden="true">#</span> clips</li>
+        <li><span aria-hidden="true">#</span> late-night</li>
+        <li class="off"><span aria-hidden="true">#</span> announcements <span class="quiet">quiet</span></li>
+        <li class="off"><span aria-hidden="true">#</span> rules <span class="quiet">quiet</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section stock ask" id="ask">
+  <div class="wrap ask-inner">
+    <div>
+      <h2>Want Kiroku in your server?</h2>
+      <p>It keeps the record for one server right now. More are on the way.</p>
+    </div>
+    <a class="btn btn-violet" href="/coming-soon/">Ask about Kiroku</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-brand"><span class="seal" aria-hidden="true" lang="ja">記</span><span><b>Kiroku</b> · <span lang="ja">記録</span>, “record”</span></p>
+      <p class="footer-note">Lantern Club and everyone in it are made up. The names and numbers on this page are examples, not real members.</p>
+    </div>
+    <p class="footer-links">
+      <a href="mailto:support@kiroku.gg">support@kiroku.gg</a>
+      <a href="https://github.com/KaiKeeps/kiroku-site" rel="noopener">Source on GitHub</a>
+      <span class="copyright">© 2026 Kiroku</span>
+    </p>
+  </div>
+</footer>
+</body>
+</html>
